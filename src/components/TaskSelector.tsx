@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { GripVertical, Plus, Minus } from "lucide-react";
+import { GripVertical } from "lucide-react";
 import type { TaskTemplate, PlanTask } from "@/types/morning";
 import { generateTaskId } from "@/lib/timeUtils";
 import { cn } from "@/lib/utils";
+import MinutesSelect from "@/components/MinutesSelect";
 
 interface TaskSelectorProps {
   templates: TaskTemplate[];
@@ -49,12 +48,6 @@ const TaskSelector = ({ templates, selectedTasks, onTasksChange }: TaskSelectorP
     );
   };
 
-  const adjustMinutes = (taskId: string, delta: number) => {
-    const task = selectedTasks.find(t => t.id === taskId);
-    if (task) {
-      updateTaskMinutes(taskId, task.minutes + delta);
-    }
-  };
 
   const handleDragStart = (index: number) => {
     setDraggedIndex(index);
@@ -130,32 +123,10 @@ const TaskSelector = ({ templates, selectedTasks, onTasksChange }: TaskSelectorP
               >
                 <GripVertical className="w-4 h-4 text-muted-foreground cursor-grab" />
                 <span className="flex-1 font-medium">{task.name}</span>
-                <div className="flex items-center gap-1">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="h-8 w-8"
-                    onClick={() => adjustMinutes(task.id, -1)}
-                  >
-                    <Minus className="w-3 h-3" />
-                  </Button>
-                  <Input
-                    type="number"
-                    value={task.minutes}
-                    onChange={(e) => updateTaskMinutes(task.id, parseInt(e.target.value) || 1)}
-                    className="w-16 h-8 text-center"
-                    min={1}
-                  />
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="h-8 w-8"
-                    onClick={() => adjustMinutes(task.id, 1)}
-                  >
-                    <Plus className="w-3 h-3" />
-                  </Button>
-                  <span className="text-sm text-muted-foreground ml-1">分</span>
-                </div>
+                <MinutesSelect
+                  value={task.minutes}
+                  onChange={(minutes) => updateTaskMinutes(task.id, minutes)}
+                />
               </div>
             ))}
           </div>
