@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ArrowLeft, Plus, Trash2, Edit2, Check, X } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
+import MinutesSelect from "@/components/MinutesSelect";
 import { toast } from "@/hooks/use-toast";
 import { getTemplates, addTemplate, updateTemplate, deleteTemplate } from "@/lib/storage";
 import { generateTemplateId } from "@/lib/timeUtils";
@@ -111,14 +112,11 @@ const Templates = () => {
                   onChange={(e) => setNewName(e.target.value)}
                   className="flex-1"
                 />
-                <Input
-                  type="number"
+                <MinutesSelect
                   value={newMinutes}
-                  onChange={(e) => setNewMinutes(parseInt(e.target.value) || 1)}
-                  className="w-20"
-                  min={1}
+                  onChange={setNewMinutes}
+                  className="w-24 h-10"
                 />
-                <span className="flex items-center text-sm text-muted-foreground">分</span>
               </div>
               <div className="flex gap-2">
                 <Button onClick={handleAdd} size="sm">
@@ -150,14 +148,11 @@ const Templates = () => {
                         onChange={(e) => setEditName(e.target.value)}
                         className="flex-1"
                       />
-                      <Input
-                        type="number"
+                      <MinutesSelect
                         value={editMinutes}
-                        onChange={(e) => setEditMinutes(parseInt(e.target.value) || 1)}
-                        className="w-20"
-                        min={1}
+                        onChange={setEditMinutes}
+                        className="w-24 h-10"
                       />
-                      <span className="flex items-center text-sm text-muted-foreground">分</span>
                     </div>
                     <div className="flex gap-2">
                       <Button onClick={handleSaveEdit} size="sm">
