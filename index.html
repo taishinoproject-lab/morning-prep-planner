@@ -7,6 +7,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="%BASE_URL%manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="%BASE_URL%icons/apple-touch-icon.svg" />
     <title>朝の支度 - 逆算アプリ</title>
     <meta name="description" content="朝の支度を逆算して、余裕のある朝を。起床時刻・就寝時刻を自動計算するシンプルなアプリ。" />
     <meta name="author" content="Lovable" />
@@ -19,6 +21,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@Lovable" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <script>
+      const redirectPath = sessionStorage.getItem("redirectPath");
+      if (redirectPath) {
+        sessionStorage.removeItem("redirectPath");
+        history.replaceState(null, "", redirectPath);
+      }
+    </script>
   </head>
 
   <body>
