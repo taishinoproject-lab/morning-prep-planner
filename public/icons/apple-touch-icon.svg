@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180" role="img" aria-label="朝の支度">
+  <rect width="180" height="180" rx="32" fill="#0891b2" />
+  <circle cx="90" cy="90" r="50" fill="#ffffff" />
+  <circle cx="90" cy="90" r="42" fill="#0891b2" />
+  <path d="M90 60v34l20 14" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M60 50l16 8" stroke="#facc15" stroke-width="7" stroke-linecap="round" />
+  <path d="M120 50l-16 8" stroke="#facc15" stroke-width="7" stroke-linecap="round" />
+</svg>

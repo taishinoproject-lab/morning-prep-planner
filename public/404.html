@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script>
+      const pathSegments = window.location.pathname.split("/");
+      const basePath = pathSegments.length > 2 ? `/${pathSegments[1]}/` : "/";
+      sessionStorage.setItem(
+        "redirectPath",
+        window.location.pathname + window.location.search + window.location.hash,
+      );
+      window.location.replace(basePath);
+    </script>
+  </head>
+  <body></body>
+</html>
