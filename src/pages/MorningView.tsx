@@ -125,7 +125,7 @@ const MorningView = () => {
           </Card>
         ) : showTimer ? (
           /* タイマーモード */
-          <Timer timeline={schedule.timeline} onComplete={handleComplete} />
+          <Timer timeline={schedule.timeline} leaveTime={schedule.leaveTime} onComplete={handleComplete} />
         ) : (
           /* タイムライン表示 */
           <>
